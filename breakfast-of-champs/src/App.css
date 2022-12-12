@@ -188,3 +188,19 @@ form {
   align-items: center;
   justify-content: space-around;
 }
+
+.size-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type=radio] {
+  width: 35px;
+  height: 35px;
+}
+
+label {
+  width: 50px;
+}
