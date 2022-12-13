@@ -1,6 +1,41 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+
 
 const OrderScreen = () => {
+  const [bases, setBases] = useState([]);
+  const [extras, setExtras] = useState([]);
+
+  const getData = () => {
+    axios
+      .get("/api/getOptions")
+      .then((res) => {
+        console.log(res.data);
+        setBases(res.data.bases)
+        setExtras(res.data.extras)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
+
+  useEffect(() => {
+    getData()
+  }, []);
+
+  const baseOptions = bases.map((drink) => {
+    return <option value={drink.name}>{drink.name}</option>
+  });
+
+  const extraOptions = extras.map((x) => {
+    return (
+      <>
+        <label htmlFor="{x.name}">{x.name}</label>
+        <input type="checkbox" name="extras" id={x.name} />
+      </>
+    )
+  });
+
   return (
     <div className="main-page">
       <h1>Order up!</h1>
@@ -18,7 +53,12 @@ const OrderScreen = () => {
         </div>
         <select name="" id="">
             <option value="" default disabled selected >Select Base</option>
+            {baseOptions}
         </select>
+        <h3>Extras</h3>
+        <div>
+          {extraOptions}
+        </div>
       </form>
     </div>
   );
