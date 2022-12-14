@@ -1,16 +1,34 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import axios from "axios";
 
 
 const OrderScreen = () => {
   const [bases, setBases] = useState([]);
   const [extras, setExtras] = useState([]);
+  const [userExtras, setUserExtras] = useState([]);
+  const [size, setSize] = useState("");
+  const baseRef = useRef();
+  const notesRef = useRef();
+  console.log(userExtras);
+
+  const handleSizeChange = (e) => {
+    setSize(e.target.value);
+  };
+
+  const handleExtras = (e) => {
+    if (userExtras.includes(e.target.value)) {
+      let newState = userExtras.filter((x) => x !== e.target.value)
+      setUserExtras(newState)
+    } else {
+      setUserExtras([...userExtras, e.target.value])
+    }
+  };
+
 
   const getData = () => {
     axios
       .get("/api/getOptions")
       .then((res) => {
-        console.log(res.data);
         setBases(res.data.bases)
         setExtras(res.data.extras)
       })
@@ -31,7 +49,7 @@ const OrderScreen = () => {
     return (
       <>
         <label htmlFor="{x.name}">{x.name}</label>
-        <input type="checkbox" name="extras" id={x.name} />
+        <input type="checkbox" name="extras" id={x.name} value={x.name} onChange={handleExtras} />
       </>
     )
   });
@@ -43,21 +61,25 @@ const OrderScreen = () => {
         <h3>Select Size</h3>
         <div className="size-container">
           <label htmlFor="small">small</label>
-          <input type="radio" id="small"/>
+          <input type="radio" id="small" name="size" value="Small" onChange={handleSizeChange} />
           <label htmlFor="medium">medium</label>
-          <input type="radio" id="medium"/>
+          <input type="radio" id="medium" name="size" value="Medium" onChange={handleSizeChange} />
           <label htmlFor="large">large</label>
-          <input type="radio" id="large"/>
+          <input type="radio" id="large" name="size" value="Large" onChange={handleSizeChange} />
           <label htmlFor="x-large">x-large</label>
-          <input type="radio" id="x-large"/>
+          <input type="radio" id="x-large" name="size" value="X-Large" onChange={handleSizeChange} />
         </div>
-        <select name="" id="">
+        <select name="" id="" ref={baseRef}>
             <option value="" default disabled selected >Select Base</option>
             {baseOptions}
         </select>
         <h3>Extras</h3>
         <div>
           {extraOptions}
+        </div>
+        <textarea rows={6} placeholder="Notes about order:" ref={notesRef}/>
+        <div className="order-form-button-container">
+          <button>Add to Cart</button>
         </div>
       </form>
     </div>

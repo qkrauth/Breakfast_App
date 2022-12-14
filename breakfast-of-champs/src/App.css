@@ -204,3 +204,14 @@ input[type=radio] {
 label {
   width: 50px;
 }
+
+.order-form-button-container {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: #838383;
+}
+
+.main-page {
+  padding-bottom: 75px;
+}
