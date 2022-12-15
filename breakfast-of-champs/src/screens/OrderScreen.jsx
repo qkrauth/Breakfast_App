@@ -24,6 +24,18 @@ const OrderScreen = () => {
     }
   };
 
+  const addToCart = (e) => {
+    e.preventDefault()
+    const drink = {
+      name: "Custon Order",
+      size: size,
+      base: baseRef.current.value,
+      extras: userExtras,
+      notes: notesRef.current.value
+    }
+    console.log(drink);
+  };
+
 
   const getData = () => {
     axios
@@ -47,17 +59,17 @@ const OrderScreen = () => {
 
   const extraOptions = extras.map((x) => {
     return (
-      <>
+      <div className="extra">
         <label htmlFor="{x.name}">{x.name}</label>
         <input type="checkbox" name="extras" id={x.name} value={x.name} onChange={handleExtras} />
-      </>
+      </div>
     )
   });
 
   return (
     <div className="main-page">
       <h1>Order up!</h1>
-      <form action="">
+      <form onSubmit={addToCart}>
         <h3>Select Size</h3>
         <div className="size-container">
           <label htmlFor="small">small</label>
@@ -74,7 +86,7 @@ const OrderScreen = () => {
             {baseOptions}
         </select>
         <h3>Extras</h3>
-        <div>
+        <div className="extras-container">
           {extraOptions}
         </div>
         <textarea rows={6} placeholder="Notes about order:" ref={notesRef}/>

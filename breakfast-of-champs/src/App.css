@@ -215,3 +215,16 @@ label {
 .main-page {
   padding-bottom: 75px;
 }
+
+.extras-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px 0px;
+}
+
+.extra {
+  width: 200px;
+  display: flex;
+}
