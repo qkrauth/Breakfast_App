@@ -228,3 +228,27 @@ label {
   width: 200px;
   display: flex;
 }
+
+.cart-item {
+  width: 95vw;
+  height: 125px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item img {
+  height: 100%;
+}
+
+.cart-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-info ul {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}

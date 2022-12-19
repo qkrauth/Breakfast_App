@@ -1,5 +1,6 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useRef, useContext} from "react";
 import axios from "axios";
+import GlobalContext from "../store/GlobalContext";
 
 
 const OrderScreen = () => {
@@ -7,9 +8,11 @@ const OrderScreen = () => {
   const [extras, setExtras] = useState([]);
   const [userExtras, setUserExtras] = useState([]);
   const [size, setSize] = useState("");
+  const {state, dispatch} = useContext(GlobalContext);
   const baseRef = useRef();
   const notesRef = useRef();
-  console.log(userExtras);
+
+  console.log(state.cart);
 
   const handleSizeChange = (e) => {
     setSize(e.target.value);
@@ -33,7 +36,8 @@ const OrderScreen = () => {
       extras: userExtras,
       notes: notesRef.current.value
     }
-    console.log(drink);
+    // console.log(drink);
+    dispatch({type: "ADDTOCART", payload: drink})
   };
 
 
