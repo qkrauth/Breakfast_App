@@ -9,9 +9,15 @@ const CartScreen = () => {
         return <CartCard drink={drink}/>
     });
 
+    const cartTotal = state.cart.reduce((acc, drink) => {
+        return acc + drink.cost
+    }, 0);
+        
+
     return (
         <div className="main-page">
             <h1>My Cart</h1>
+            <h2>{cartTotal}</h2>
             <div className="cart-container">
                 {cartDisplay}
             </div>

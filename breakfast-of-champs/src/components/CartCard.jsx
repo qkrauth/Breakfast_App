@@ -14,7 +14,7 @@ const CartCard = ({drink}) => {
             {drink.extras.map((x) => <li>{x}</li>)}
         </ul>
       </div>
-      <h4 className="colored-text">$1.99</h4>
+      <h4 className="colored-text">{drink.cost}</h4>
     </div>
   );
 };
