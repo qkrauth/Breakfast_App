@@ -1,6 +1,9 @@
 import React from "react";
+import useCurrency from "../hooks/useCurrency";
 
 const CartCard = ({drink}) => {
+  const price = useCurrency(drink.cost)
+
   return (
     <div className="cart-item">
       <img
@@ -14,7 +17,7 @@ const CartCard = ({drink}) => {
             {drink.extras.map((x) => <li>{x}</li>)}
         </ul>
       </div>
-      <h4 className="colored-text">{drink.cost}</h4>
+      <h4 className="colored-text">{price}</h4>
     </div>
   );
 };
