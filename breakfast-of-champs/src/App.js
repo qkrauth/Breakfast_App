@@ -4,6 +4,7 @@ import {Routes, Route} from "react-router-dom";
 import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
 import OrderScreen from './screens/OrderScreen';
+import ReceiptScreen from './screens/ReceiptScreen';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/cart" element={<CartScreen />}/>
         <Route path="/order" element={<OrderScreen />}/>
         <Route path="/order/:favorite" element={<OrderScreen />}/>
+        <Route path="/thankyou" element={<ReceiptScreen />} />
       </Routes>
     </div>
   );

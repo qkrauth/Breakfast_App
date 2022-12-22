@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import {Link} from "react-router-dom";
 import CartCard from "../components/CartCard";
 import GlobalContext from "../store/GlobalContext";
 import useCurrency from "../hooks/useCurrency";
@@ -25,7 +26,7 @@ const CartScreen = () => {
                 {cartDisplay}
             </div>
             <div className="order-form-button-container">
-                <button>Check Out</button>
+                <Link to="/thankyou"><button>Check Out</button></Link>
             </div>
         </div>
     );
