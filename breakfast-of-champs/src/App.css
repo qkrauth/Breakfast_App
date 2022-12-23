@@ -214,6 +214,7 @@ label {
 
 .main-page {
   padding-bottom: 75px;
+  width: 100vw;
 }
 
 .extras-container {
@@ -291,4 +292,9 @@ label {
 
 li {
   text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

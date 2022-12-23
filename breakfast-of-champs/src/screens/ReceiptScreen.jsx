@@ -5,8 +5,9 @@ import GlobalContext from "../store/GlobalContext";
 
 const ReceiptScreen = () => {
   const { state, dispatch } = useContext(GlobalContext);
+  const [order, setOrder] = useState(state.cart);
 
-  let subTotal = state.cart.reduce((acc, drink) => {
+  let subTotal = order.reduce((acc, drink) => {
     return acc + drink.cost;
   }, 0);
 
@@ -15,9 +16,13 @@ const ReceiptScreen = () => {
   subTotal = useCurrency(subTotal);
   total = useCurrency(total);
 
-  const receiptItemDisplay = state.cart.map((drink) => {
+  let receiptItemDisplay = order.map((drink) => {
     return <ReceiptItem drink={drink} />;
   });
+
+  useEffect(() => {
+    dispatch({type: "RESETCART"})
+  }, [])
 
   return (
     <div>

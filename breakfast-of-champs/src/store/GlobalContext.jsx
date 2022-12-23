@@ -12,6 +12,8 @@ const GlobalContextProvider = (props) => {
         switch(action.type) {
             case "ADDTOCART":
                 return {...state, cart: [...state.cart, action.payload]}
+            case "RESETCART":
+                return {...state, cart: []}
             default:
                 return state
         }
