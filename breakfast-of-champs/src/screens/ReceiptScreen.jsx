@@ -11,7 +11,7 @@ const ReceiptScreen = () => {
     return acc + drink.cost;
   }, 0);
 
-  let total = subTotal + subTotal * 0.07;
+  let total = subTotal + subTotal * 0.06;
 
   subTotal = useCurrency(subTotal);
   total = useCurrency(total);

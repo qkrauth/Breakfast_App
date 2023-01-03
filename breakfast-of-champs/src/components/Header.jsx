@@ -1,12 +1,13 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { name } from "../assets/companyInfo";
 
 const Header = () => {
   return (
     <header>
       <Link to="/">
-        <p>Breakfast Time!!!</p>
+        <p>{name}</p>
       </Link>
       <nav>
         <Link to="/cart">
