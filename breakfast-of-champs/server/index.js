@@ -4,7 +4,7 @@ const server = express();
 const db = require("./util/database");
 const {Base, Extra, Favorite} = require("./util/models");
 const seed = require("./seed/seed");
-const {getOptions} = require("./controllers/drinksController");
+const {getOptions, getFavorites} = require("./controllers/drinksController");
 
 //middleware
 server.use(express.json());
@@ -16,6 +16,7 @@ Extra.hasMany(Favorite);
 Favorite.belongsTo(Extra);
 
 server.get("/api/getOptions", getOptions);
+server.get("/api/favorites", getFavorites)
 
 // db
 //     .sync({force:true})
